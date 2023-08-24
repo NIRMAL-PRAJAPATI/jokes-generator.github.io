@@ -78,30 +78,35 @@ const joke_box = document.getElementById('jokes');
 const joke_btn = document.getElementById('joke-btn');
 const pre_btn = document.getElementById('pre-btn');
 
-let JokeGenerator = 0;
+let JokeGenerator = -1;
 
 const jokes = () => {
     if (JokeGenerator < arr_length) {
-
+        JokeGenerator++;
         joke_box.innerHTML = joke_list[JokeGenerator];
         joke_btn.innerHTML = ("Tell Another Joke");
         pre_btn.innerHTML = ("Previous Joke");
 
-        JokeGenerator++;
+        
     }
 
     else if (JokeGenerator == arr_length) {
         joke_box.innerHTML = ('<code>Sorry, all the jokes are finished which is available in our data !!!<br>thank you for visiting and reading the jokes.</code>');
     }
+    // console.log("current : "+ JokeGenerator)
 }
 
 const prev_btn = () => {
-    if (JokeGenerator <= 0) {
-        joke_box.innerHTML = ('<code>No content available in previous side. Click the \"Tell Me Joke\" button to see the joke...</code>');
+
+   if (JokeGenerator <= 0) {
+        console.log("there is no joke")
+        joke_box.innerHTML = "<code>No content available in previous side. Click the \"Tell Me Joke\" button to see the joke...</code>";
     }
 
     else {
     JokeGenerator--;
-    joke_box.innerHTML = (joke_list[JokeGenerator]);
+    joke_box.innerHTML = joke_list[JokeGenerator];
     }
+
+    // console.log(JokeGenerator)
 }
